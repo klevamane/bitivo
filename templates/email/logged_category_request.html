@@ -1,0 +1,14 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.assignee_name }}!</strong>
+      </h2>
+      <p class="email-body-content">
+        A <strong>{{ data.request_category_name }}</strong> request has been logged by <strong>{{ data.requester }}.</strong>
+        Please log in to Activo to view more details.
+      </p>
+      <a href="https://{{ data.domain }}/support?requestId={{ data.id }}" class="button">
+        View Details
+      </a>
+{% endblock %}

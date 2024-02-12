@@ -1,0 +1,26 @@
+{
+    "center": [
+        {
+            "name": "Kampala",
+            "image": {
+                "public_id": "br4mxeqx5zb8rlakpfkm",
+                "format": "jpg",
+                "url": "https://res.cloudinary.com/"
+            }
+        }, {
+            "name": "Nairobi",
+            "image": {
+                "public_id": "fr4mxeqx5zb8rlakpfku",
+                "format": "jpg",
+                "url": "https://res.cloudinary.com/"
+            }
+        }, {
+            "name": "Ghana",
+            "image": {
+                "public_id": "fr4mxeqx5zb8rlakpfkn",
+                "format": "jpg",
+                "url": "https://res.cloudinary.com/"
+            }
+        }
+    ]
+}

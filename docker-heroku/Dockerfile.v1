@@ -1,0 +1,59 @@
+# base image
+FROM ubuntu:16.04 
+
+# Maintainer
+LABEL maintainer="Idrees Ibraheem <idrees.ibraheem@andela.com>"
+
+# Working directory where all the setup would take place in the image
+WORKDIR /activo-api
+
+# The default user that should be used
+USER root
+
+# copy the Pipfile & pipfile.lock which contains dependencies to be installed
+COPY ./Pipfile /activo-api
+COPY ./Pipfile.lock /activo-api
+
+# the image to be created is provisioned here
+RUN apt-get update -y && \
+  apt-get install -y python3-pip python3-dev python-flask python3 zlib1g-dev libbz2-dev logrotate && \
+  apt-get install build-essential -y && \
+  apt-get install libreadline-dev libyaml-dev libsqlite3-dev -y && \
+  apt-get install sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev  unattended-upgrades -y && \
+  apt-get install libffi-dev libpq-dev sudo vim less supervisor jq nginx nginx-extras virtualenv -y && \
+  apt-get install git-core -y && \
+  apt-get install curl -y && \
+  apt-get install libssl-dev -y && \
+  apt install net-tools && \
+  curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash && \
+  export PATH="/root/.pyenv/bin:$PATH" && \
+  eval "$(pyenv init -)" && \
+  eval "$(pyenv virtualenv-init -)"  && \
+  pyenv install 3.6.5 -s && \
+  export PATH="/root/.pyenv/versions/3.6.5:$PATH" && \
+  export LC_ALL=C.UTF-8 && \
+  export LANG=C.UTF-8 && \
+  export PATH="/root/activo-api/start.sh:$PATH" && \
+  pip3 install --user pipenv==2018.5.18 && \
+  python3 -m pip install pipenv==2018.5.18 && \
+  python3 -m pipenv install gunicorn 
+
+# All files in the root directory are copied here
+COPY . .
+
+RUN ls
+
+# make start script executable 
+RUN chmod 777 docker-heroku/start.sh 
+
+# Expose the PORT that app would be accessible on
+EXPOSE 5000
+
+#  add the port to the docker environment
+ENV PORT=5000
+
+#  command used to create the virtual environment before the application is started 
+CMD ["/bin/bash","-c","source /root/.local/share/virtualenvs/activo-api-*/bin/activate"]
+
+#  the entry point where the application can be started on
+ENTRYPOINT ["docker-heroku/start.sh"]

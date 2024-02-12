@@ -1,0 +1,14 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        Hi {{ data.username }}!
+      </h2>
+      <p class="email-body-content">
+        <strong>{{ data.assignerName }}</strong> has assigned you to a work order on <strong>{{ data.workOrder }}</strong>. Please login to your Activo account to view more details.
+      </p>  
+      
+      <div class="login">
+      <a href="https://{{ data.domain }}" class="login-button">View Details</a>  
+      </div> 
+{% endblock %}

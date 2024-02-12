@@ -1,0 +1,11 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.assignee }} !</strong>
+      </h2>
+      <p class="email-body-content">
+        We've had to close your request titled <strong>{{ data.subject }}</strong> because we didn't hear from you when this request was completed by us. For any concerns, kindly log them on Activo.
+      </p>
+      <p class="thanks">Thank you</p>
+{% endblock %}

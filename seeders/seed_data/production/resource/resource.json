@@ -1,0 +1,21 @@
+{
+    "resource": [
+        "Assets",
+        "Asset Categories",
+        "Centers",
+        "Spaces",
+        "Stock Count",
+        "Roles",
+        "People",
+        "History",
+        "Requests",
+        "Request Types",
+        "Comments",
+        "Hot Desks",
+        "Maintenance Categories",
+        "Schedules",
+        "Work Orders",
+        "Permissions"
+
+    ]
+}

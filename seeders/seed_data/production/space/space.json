@@ -1,0 +1,620 @@
+{
+    "space" : [
+        {
+            "id": 1,
+            "name": "Epic Tower",
+            "parentId": null,
+            "center": "Lagos",
+            "type": "Building"
+        },
+        {
+            "id": 2,
+            "name": "Ground Floor",
+            "parentId": 1,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 3,
+            "name": "Charley",
+            "parentId": 2,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 4,
+            "name": "Banku",
+            "parentId": 2,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 5,
+            "name": "First Floor",
+            "parentId": 1,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 6,
+            "name": "Gold Coast",
+            "parentId": 5,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 7,
+            "name": "Kente",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 8,
+            "name": "Akwaaba",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 9,
+            "name": "Phone Booth 1",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 10,
+            "name": "Phone Booth 2",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 11,
+            "name": "Phone Booth 3",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 12,
+            "name": "Phone Booth 4",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 13,
+            "name": "Third Floor",
+            "parentId": 1,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 14,
+            "name": "Naija",
+            "parentId": 13,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 15,
+            "name": "Yankari",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 16,
+            "name": "Tinapa",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 17,
+            "name": "Tarkwa",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 18,
+            "name": "Ogbunike",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 19,
+            "name": "Kajuru",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 20,
+            "name": "Ikogosi",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 21,
+            "name": "Phone Booth 1",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 22,
+            "name": "Phone Booth 2",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 23,
+            "name": "Studio",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 24,
+            "name": "Kampala",
+            "parentId": 13,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 25,
+            "name": "Ops Store",
+            "parentId": 24,
+            "center": "Lagos",
+            "type": "Store"
+        },
+        {
+            "id": 26,
+            "name": "Mwanzo",
+            "parentId": 24,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 27,
+            "name": "Fourth Floor",
+            "parentId": 1,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 28,
+            "name": "Big Apple",
+            "parentId": 27,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 29,
+            "name": "Zuma",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 30,
+            "name": "Wall Street",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 31,
+            "name": "Empire State",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 32,
+            "name": "Cognitio",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 33,
+            "name": "Aso",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 34,
+            "name": "Safari",
+            "parentId": 27,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 35,
+            "name": "Udi",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 36,
+            "name": "Ubuntu",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 37,
+            "name": "Olumo",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 38,
+            "name": "Obudu",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 39,
+            "name": "Naivasha",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 40,
+            "name": "Mara",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 41,
+            "name": "Idanre",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 42,
+            "name": "Fifth Floor",
+            "parentId": 1,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 43,
+            "name": "Eko",
+            "parentId": 42,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 44,
+            "name": "Yaba",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 45,
+            "name": "City by the Bay",
+            "parentId": 42,
+            "center": "Lagos",
+            "type": "Wing"
+        },
+        {
+            "id": 46,
+            "name": "Computer Village",
+            "parentId": 45,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 48,
+            "name": "Finance Office",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 49,
+            "name": "Team Office",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 50,
+            "name": "Talent Office",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 51,
+            "name": "Ops Office",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 52,
+            "name": "Acaps Room",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 53,
+            "name": "Black Ops",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 54,
+            "name": "Cafeteria",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 55,
+            "name": "People's Office",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 56,
+            "name": "Training Room",
+            "parentId": 45,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 57,
+            "name": "Under Stairway",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 58,
+            "name": "Grand Central",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 59,
+            "name": "Nap Room 1",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 60,
+            "name": "Nap Room 2",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 61,
+            "name": "Lounge",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 62,
+            "name": "Fathom",
+            "parentId": 24,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 63,
+            "name": "Nap Room",
+            "parentId": 24,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 64,
+            "name": "Guest Area",
+            "parentId": 24,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 66,
+            "name": "Chill Zone",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 67,
+            "name": "Quiet Room Lounge",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 68,
+            "name": "Phone Booths",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 69,
+            "name": "Quiet Room",
+            "parentId": 6,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 70,
+            "name": "JM1",
+            "parentId": null,
+            "center": "Lagos",
+            "type": "Building"
+        },{
+            "id": 71,
+            "name": "JM1 First Floor",
+            "parentId": 70,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 72,
+            "name": "JM1 Second Floor",
+            "parentId": 70,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 73,
+            "name": "JM1 Third Floor",
+            "parentId": 70,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 74,
+            "name": "JM1 Fourth Floor",
+            "parentId": 70,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 75,
+            "name": "JM1 Lobby",
+            "parentId": 70,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 76,
+            "name": "JM1 Ground Floor",
+            "parentId": 70,
+            "center": "Lagos",
+            "type": "Floor"
+        },
+        {
+            "id": 77,
+            "name": "Lagos Traffic",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 78,
+            "name": "Patio",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 79,
+            "name": "Chambers of Secret",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 80,
+            "name": "Maunakea",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 81,
+            "name": "Kitchenette",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 82,
+            "name": "Herbert Macaulay",
+            "parentId": 43,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 83,
+            "name": "Creche",
+            "parentId": 14,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 84,
+            "name": "Friend Zone",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 85,
+            "name": "Inverter Room 2",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 86,
+            "name": "The Other Room",
+            "parentId": 28,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 87,
+            "name": "Inverter Room",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 88,
+            "name": "Inverter Room 1",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 89,
+            "name": "Facilities Store",
+            "parentId": 34,
+            "center": "Lagos",
+            "type": "Room"
+        },
+        {
+            "id": 90,
+            "name": "Data Centre",
+            "parentId": 24,
+            "center": "Lagos",
+            "type": "Room"
+        }
+
+    ]
+}

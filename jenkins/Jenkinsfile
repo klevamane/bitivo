@@ -1,0 +1,252 @@
+#!groovy​
+
+pipeline {
+  agent {
+    kubernetes {
+      label 'activo-api-jenkins'
+      defaultContainer 'jnlp'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  label:
+    component: ci
+spec:
+  containers:
+  - name: activo-backend
+    image: gcr.io/${GCLOUD_ACTIVO_PROJECT}/activo-api-jenkins-backend
+    command:
+    - cat
+    tty: true
+  - name: activo-ansible-deploy-qa
+    image: gcr.io/${GCLOUD_ACTIVO_PROJECT}/activo-api-ci-ansible
+    command:
+    - cat
+    tty: true
+  - name: activo-ansible-deploy
+    image: gcr.io/${GCLOUD_ACTIVO_PROJECT}/activo-api-ci-ansible
+    command:
+    - cat
+    tty: true
+    securityContext:
+      privileged: true
+    env:
+      - name: DOCKER_HOST
+        value: tcp://localhost:2375
+  - name: activo-api-jenkins-dind
+    image: gcr.io/${GCLOUD_ACTIVO_PROJECT}/activo-api-jenkins-dind
+    securityContext:
+      privileged: true
+"""
+    }
+  }
+
+  // Varibles that should be held in the environment of the pipeline
+  environment {
+    FLASK_ENV='testing'
+    FLASK_APP='manage.py'
+    PGUSER='postgres'
+    PG_HOST='localhost'
+    API_BASE_URL_V1='/api/v1'
+    LC_ALL='C.UTF-8'
+    LANG='C.UTF-8'
+  }
+
+  // Pipeline job workflow
+  stages {
+    // Stage to build test environment
+    stage('Build') {
+      steps {
+        container ('activo-backend'){
+          sh "echo ' ++++++++++++++++++++++ Install dependancies ++++++++++++++++++++++'"
+          sh """
+            cd ${WORKSPACE}
+            python3.6 -m pipenv install
+          """
+          sh "echo 'Setup the database'"
+          sh """
+            service postgresql start
+          """
+          sh "echo ' ++++++++++++++++++++++ Environment Ready ++++++++++++++++++++++'"
+        }
+      }
+    }
+
+    // Stage to run tests
+    stage('Run_tests') {
+      steps {
+        container ('activo-backend'){
+          withCredentials([
+              file(credentialsId: 'activoapi_build_env', variable: 'TEST_ENV_VARS')
+            ]) {
+              load "$TEST_ENV_VARS"
+          }
+          sh "echo ' ++++++++++++++++++++++ Download test reporter ++++++++++++++++++++++'"
+          sh """
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /tmp/cc-test-reporter
+            chmod +x /tmp/cc-test-reporter
+          """
+          sh "echo ' ++++++++++++++++++++++ Run tests ++++++++++++++++++++++'"
+          sh "cd ${WORKSPACE}"
+          sh "chmod +x jenkins/scripts/test_script.sh"
+          sh "./jenkins/scripts/test_script.sh"
+          sh "echo ' ++++++++++++++++++++++ Tests Passed! ++++++++++++++++++++++'"
+        }
+      }
+    }
+
+    // Stage to upload current code coverage
+    stage('Upload_coverage') {
+      steps {
+        container ('activo-backend'){
+          withCredentials([
+              string(credentialsId: 'activoapi_codeclimate_id', variable: 'CC_TEST_REPORTER_ID')
+            ]) {
+            sh "echo ' ++++++++++++++++++++++ Upload Test Covarage  ++++++++++++++++++++++'"
+            sh " cd ${WORKSPACE}"
+            sh "/tmp/cc-test-reporter upload-coverage -i tmp/cc.testreport.json"
+            sh "echo ' ++++++++++++++++++++++ Upload Test successful  ++++++++++++++++++++++'"
+          }
+        }
+      }
+    }
+
+    // Stage to build docker images and deploy to heroku
+    stage('Build_and_heroku'){
+      parallel {
+        // Stage to deploy to heroku environment
+        stage('Heroku_deploy') {
+          when {
+            anyOf {
+              branch 'develop'
+              }
+          }
+          steps {
+            container ('activo-api-jenkins-dind'){
+              withCredentials([
+                file(credentialsId: 'activo-api-build-docker-and-deploy', variable: 'BUILD_DEPLOY_VARS')
+              ]) {
+                  load "$BUILD_DEPLOY_VARS"
+              }
+            sh "echo ' ++++++++++++++++++++++ Deploy to heroku ++++++++++++++++++++++'"
+            sh """
+              cd ${WORKSPACE}
+              chmod +x jenkins/scripts/deploy_scripts/deploy_to_heroku.sh
+              ./jenkins/scripts/deploy_scripts/deploy_to_heroku.sh
+            """
+            sh "echo ' ++++++++++++++++++++++ Deployment was successful ++++++++++++++++++++++'"
+              }
+            }
+        }
+
+        // Stage to build docker image for staging or production
+        stage ('Build_image') {
+          when {
+            anyOf {
+              branch 'develop'
+              branch 'master'
+            }
+          }
+          steps {
+            container ('activo-api-jenkins-dind'){
+              withCredentials([
+                file(credentialsId: 'activo-api-build-docker-and-deploy', variable: 'BUILD_DEPLOY_VARS')
+              ]) {
+                  load "$BUILD_DEPLOY_VARS"
+                }
+              sh "echo ' ++++++++++++++++++++++ Build docker image! ++++++++++++++++++++++'"
+              sh "cd ${WORKSPACE}"
+              sh """
+              chmod +x jenkins/scripts/build_scripts/build_image.sh
+              ./jenkins/scripts/build_scripts/build_image.sh
+              """
+              sh "echo ' ++++++++++++++++++++++ Done! ++++++++++++++++++++++'"
+           }
+          }
+        }
+
+        // Stage to build image for the qa environment
+        stage ('Build_image_qa') {
+          when {
+            anyOf {
+              branch 'master'
+            }
+          }
+          steps {
+            container ('activo-api-jenkins-dind'){
+              withCredentials([
+                file(credentialsId: 'activo-api-build-docker-and-deploy', variable: 'BUILD_DEPLOY_VARS')
+              ]) {
+                  load "$BUILD_DEPLOY_VARS"
+                }
+              sh "echo ' ++++++++++++++++++++++ Build docker image for QA! ++++++++++++++++++++++'"
+              sh "cd ${WORKSPACE}"
+              sh """
+              chmod +x jenkins/scripts/build_scripts/build_qa_image.sh
+              ./jenkins/scripts/build_scripts/build_qa_image.sh
+              """
+              sh "echo ' ++++++++++++++++++++++ Done building QA Image! ++++++++++++++++++++++'"
+           }
+          }
+        }
+      }
+    }
+
+    // Stage for all gcp deployments
+    stage('Deploy_to_gcp') {
+      parallel {
+        //  Stage to deploy to staging and production
+        stage ('Deploy_staging_or_prod') {
+          when {
+            anyOf {
+              branch 'develop'
+              branch 'master'
+            }
+          }
+          steps {
+            container ('activo-ansible-deploy'){
+              withCredentials([
+                file(credentialsId: 'activo-api-build-docker-and-deploy', variable: 'BUILD_DEPLOY_VARS')
+              ]) {
+                  load "$BUILD_DEPLOY_VARS"
+              }
+              sh "echo ' ++++++++++++++++++++++ Deploy to GCP ++++++++++++++++++++++'"
+              sh """
+                cd ${WORKSPACE}
+                chmod +x jenkins/scripts/deploy_scripts/deploy_gcp.sh
+                ./jenkins/scripts/deploy_scripts/deploy_gcp.sh
+              """
+            sh "echo ' ++++++++++++++++++++++ Deployment successful ++++++++++++++++++++++'"
+            }
+          }
+        }
+
+        // Stage to deploy to QA environment
+        stage ('Deploy_qa') {
+          when {
+            anyOf {
+              branch 'master'
+            }
+          }
+          steps {
+            container ('activo-ansible-deploy-qa'){
+              withCredentials([
+                file(credentialsId: 'activo-api-build-docker-and-deploy', variable: 'BUILD_DEPLOY_VARS')
+              ]) {
+                  load "$BUILD_DEPLOY_VARS"
+              }
+              sh "echo ' ++++++++++++++++++++++ Deploy to QA environment on GCP  ++++++++++++++++++++++'"
+              sh """
+                cd ${WORKSPACE}
+                chmod +x jenkins/scripts/deploy_scripts/deploy_qa_gcp.sh
+                ./jenkins/scripts/deploy_scripts/deploy_qa_gcp.sh
+              """
+              sh "echo ' ++++++++++++++++++++++ Deployment to QA environment successful ++++++++++++++++++++++'"
+            }
+          }
+        }
+      }
+    }
+  }
+}

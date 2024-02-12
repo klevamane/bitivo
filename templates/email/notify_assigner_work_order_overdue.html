@@ -1,0 +1,17 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+<h2 class="email-greetings">
+    Hi {{ data.assigner }},
+</h2>
+<p class="email-body-content">
+    This is to inform you that <strong>{{ data.assignee }}</strong>'s work order to <strong>{{ data.work_order }}</strong>
+    was not completed as at the due date. This work order is now overdue.
+    <p>Please login to Activo for more details</p>
+</p>
+<p class="thanks">Thank you</p>
+
+<div class="login">
+    <a href="https://activo.andela.com" class="login-button">View Details</a>
+</div>
+{% endblock %}

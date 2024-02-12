@@ -1,0 +1,13 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.user_first_name }}!</strong>
+      </h2>
+      <p class="email-body-content">
+        Assets under <strong>{{ data.asset_category_name }}</strong> are {{ data.asset_status }} with only <strong>{{ data.asset_count }}</strong> left. Login to your Activo for more details.
+      </p>
+      <a href="https://{{ data.domain }}/" class="button">
+        View Details
+      </a>
+{% endblock %}

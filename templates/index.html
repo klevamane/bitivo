@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SSE</title>
+</head>
+<body>
+  <h1>Activo Server Sent Events</h1>
+  <script>
+    /** This javascript acts as a client to the server and is set
+    * to listen to the stream i.e sse stream
+    * it then pops an alert to the browser with the data from the server
+    **/
+    var source = new EventSource("{{ url_for('sse.stream') }}");
+    source.addEventListener('testing', function(event) {
+        var data = JSON.parse(event.data);
+        alert("The server says: " + data.message);
+    }, false);
+    source.addEventListener('error', function(event) {
+        alert("Failed to connect to event stream. Is Redis running?");
+    }, false);
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+<h2 class="email-greetings">
+    <strong>Hi {{ data.user }} !</strong>
+</h2>
+<p class="email-body-content">
+    Kindly find attached, the reports for both successful and non successful uploaded assets.
+</p>
+
+<p class="thanks">Thank you</p>
+{% endblock %}

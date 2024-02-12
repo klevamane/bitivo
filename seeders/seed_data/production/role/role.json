@@ -1,0 +1,34 @@
+{
+    "role": [
+        {
+            "title": "Director of Operations",
+            "description": "This role oversees all actions carried out within Andela"
+        }, {
+            "title": "Operations Associate",
+            "description": "This role manages the in flow and outflow of assets within Activo"
+        }, {
+            "title": "Operations Coordinator",
+            "description": "This role manages the in flow and outflow of assets and stock positions within Activo"
+        }, {
+            "title": "Operations Manager",
+            "description": "This role oversees the activities of the Operations Associate and Operations Coordinator"
+        }, {
+            "title": "Admin",
+            "description": "Activo admin",
+            "super_user": true
+        }, {
+            "title": "Regular User",
+            "description": "Regular staff member"
+        }, {
+            "title": "Activo Developer",
+            "description": "A member of the Activo developer team",
+            "super_user": true
+        }, {
+            "title": "Office Assistant",
+            "description": "This role incharge of keeping records and sorting checks of assets"
+        }, {
+            "title": "Operations Intern",
+            "description": "This role work with Operations staff to complete independent projects and/or provide support"
+        }
+    ]
+}

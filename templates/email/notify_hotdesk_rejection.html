@@ -1,0 +1,14 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.requester_name }} !</strong>
+      </h2>
+      <p class="email-body-content">
+        Your request for an hot desk with the following details  <strong>{{ data.floor }} floor</strong> and  <strong>seat {{ data.seat_number }}</strong> has been rejected.
+      </p>
+      <p class="email-body-content">
+        <b>Reason:</b> {{ data.reason }}.
+      </p>
+      <p class="thanks">Thank you</p>
+{% endblock %}

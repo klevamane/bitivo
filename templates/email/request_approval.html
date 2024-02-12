@@ -1,0 +1,11 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.username }} !</strong>
+      </h2>
+      <p class="email-body-content">
+        Your request for hot desk  <strong>{{ data.floor }} floor</strong> and  <strong>seat {{ data.seatNumber }}</strong> has been approved by  <strong>{{ data.firstName }} {{ data.lastName }}</strong>.
+      </p>
+      <p class="thanks">Thank you</p>
+{% endblock %}

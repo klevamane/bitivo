@@ -1,0 +1,177 @@
+{
+    "asset_category": [
+        {
+            "name": "USB-C Dongles",
+            "attributes": [
+                ["custodian", false],
+                ["designation", false],
+                ["previous user", false],
+                ["status", false]
+            ]
+        },
+        {
+            "name": "Andela Laptops",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Monitors",
+            "attributes":[
+                ["device type", true],
+                ["device", false],
+                ["serial number", false],
+                ["custodian", false],
+                ["team", true],
+                ["status", false],
+                ["link to receipt", false],
+                ["cost", false],
+                ["date of purchase", false],
+                ["confirmed", false]
+            ]
+        },
+         {
+            "name": "Test Devices",
+            "attributes": [
+                ["model", true],
+                ["serial number", false],
+                ["custodians", false],
+                ["partner", false],
+                ["tsm", false],
+                ["date collected", false],
+                ["date returned", false]
+            ]
+        },
+        {
+            "name": "Laptops Chargers",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Head Sets",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Dongles",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Seats",
+            "attributes": [
+                ["custodian", false],
+                ["designation", false],
+                ["previous user", false],
+                ["status", false]
+            ]
+        },
+        {
+            "name": "Tablets",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Digital Single Lens Reflex cameras ",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Epson EB S27 LCD Projector",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        },
+        {
+            "name": "Wireless Andelan KeyBoards",
+            "attributes":[
+                ["device type", false],
+                ["serial number", false],
+                ["status", false],
+                ["assignee", false],
+                ["designation", false],
+                ["warranty expiry date", false],
+                ["warranty active", false],
+                ["date of purchase", false],
+                ["today", false],
+                ["previous user", false],
+                ["comment", false]
+            ]
+        }
+    ]
+}

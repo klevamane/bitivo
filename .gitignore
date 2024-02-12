@@ -1,0 +1,27 @@
+.idea/
+.env
+.vscode
+.DS_STORE
+__pycache__
+venv
+.pytest_cache
+.pytest_cache/v/cache
+*.pyc
+activo_db
+.coverage*
+htmlcov
+.coverage*
+# redis
+/redis-stable
+dump.rdb
+celerybeat-schedule.db
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir
+celerybeat.pid
+client_secret.json
+
+# DevOps
+*.crt
+*.key
+*.pem

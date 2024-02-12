@@ -1,0 +1,14 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.username }},</strong>
+      </h2>
+      <p class="email-body-content">
+        You have been assigned to <strong>{{ data.request_category_name }}</strong> requests by <strong>{{ data.user }}</strong>.
+          You will receive notifications henceforth, once Andelans report incidences that relate to <strong>{{ data.request_category_name }}</strong>. Please log in to Activo to get started
+      </p>
+      <a href="https://{{ data.domain }}/support" class="button">
+        Login to Activo
+      </a>
+{% endblock %}

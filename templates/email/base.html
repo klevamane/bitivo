@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Gothic+A1|Roboto|Ropa+Sans|Wire+One" rel="stylesheet">
+    <style>
+        @font-face {
+          font-family: 'DinPro';
+          font-weight: 300;
+          src: url('https://res.cloudinary.com/andeladevs/raw/upload/v1531401088/DINPro-Light.ttf');
+        }
+
+        @font-face {
+          font-family: 'DinPro';
+          font-weight: 500;
+          src: url('https://res.cloudinary.com/andeladevs/raw/upload/v1531401087/DINPro-Medium.ttf');
+        }
+
+        @font-face {
+          font-family: 'DinPro';
+          font-weight: 700;
+          src: url('https://res.cloudinary.com/andeladevs/raw/upload/v1531401087/DINPro-Bold.ttf');
+        }
+
+        * {
+          font-family: DinPro;
+          font-weight: 300;
+        }
+
+        strong {
+          font-weight: bold;
+        }
+
+        .button {
+          width: 174px;
+          border-radius: 4px;
+          background-color: #3359DB;
+          text-decoration: none;
+          color: #FFFFFF !important;
+          font-family: 'Helvetica';
+          font-size: 17px;
+          line-height: 20px;
+          text-align: center;
+          display: block;
+          padding: 13px 0;
+          margin: 0 auto 120px auto;
+        }
+
+        .outer-border {
+          display: grid;
+          background-color: #ececec;
+          margin: 0;
+          padding-top: 80px;
+          text-align: center;
+        }
+
+        .email-body {
+          background-color: #FFFFFF;
+          color: #737273;
+          width: 550px;
+          margin: 0 auto;
+          border: 1px solid #F5F5F5;
+          font-family: 'Gothic A1', sans-serif;
+        }
+
+        .logo-div {
+          display: flex;
+          margin-top: 24px;
+          margin-bottom: 10px;
+          font-size: 27px;
+        }
+
+        .activo-logo {
+          display: inline;
+
+        }
+
+        .logo {
+          width: 102px;
+          height: 26px;
+          margin-left: 10px;
+          float: left;
+          background-image: url('https://res.cloudinary.com/andeladevs/image/upload/v1556605314/Logo.png');
+        }
+
+        .line{
+          position: absolute;
+          width: 550px;
+          height: 10px;
+          border-bottom: 0.1px solid #D4D4D4;
+        }
+
+        .email-greetings {
+          margin-top: 79px;
+          margin-bottom: 30px;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 31px;
+          text-align: center;
+          color: #333E44;
+        }
+
+        .email-body-content {
+          display: block;
+          font-size: 16px;
+          line-height: 21px;
+          padding: 0 50px;
+        }
+
+        .email-body-content strong {
+          font-weight: 500
+        }
+
+        .footer {
+          background-color: #D6DEE4;
+          width: 550px;
+          height: 130px;
+          margin: 0 auto 145px auto;
+          border-radius: 0 0 4px 4px;
+        }
+
+        .footer-text {
+          height: 54.32px;
+          margin: 39px 62px 36.68px 58px;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 27px;
+          color: #303030;
+        }
+
+        .question {
+          margin: 0px;
+        }
+
+        .support-email {
+          color: #303030 !important;
+          font-weight: 700px;
+        }
+
+        .login {
+          margin-top: 3rem;
+          margin-bottom: 6.6rem;
+        }
+
+        .login-button {
+          text-decoration: none;
+          padding: 0.8rem 2.2rem;
+          background-color: #3359DB;
+          color: white;
+          border-radius: 5px;
+        }
+
+        @media only screen and (max-width: 470px) {
+          .email-body {
+            width: 300px;
+          }
+
+          .footer, .line {
+            width: 300px;
+          }
+
+          .logo-div {
+            margin-left: -30px;
+          }
+
+          .login-button {
+            padding: 0.6rem 2rem;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-border">
+        <div class="email-body">
+          <div class="logo-div">
+            <div class="activo-logo">
+              <div class="logo"></div>
+            </div>
+          </div>
+          <div class="line"></div>
+            {% block content %}{% endblock %}
+        </div>
+        <div class="footer">
+          <div class="footer-text">
+            <p class="question">
+              Have a question?
+            </p>
+            <a href="mailto:support@activo.com" class="support-email">
+              support@activo.com
+            </a>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

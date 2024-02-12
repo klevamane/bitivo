@@ -1,0 +1,49 @@
+version: '2.1'
+services:
+  database:
+    restart: always
+    image: postgres:10.1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=backend
+      - POSTGRES_DB=activo
+    volumes:
+      - ./activo_db:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+    expose:
+      - '5433'
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+  app:
+    restart: always
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/activo-api
+    environment:
+      DATABASE_URI: postgres://postgres:backend@database:5432/activo
+    depends_on:
+      - redis
+      - database
+    entrypoint: ["/bin/bash","-c","/activo-api/docker/start_api.sh"]
+    stdin_open: true
+    tty: true
+  celery_flower:
+    image: mher/flower
+    command: ["flower", "--port=8888"]
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - FLOWER_PORT=8888
+    depends_on:
+      - database
+      - app
+      - redis 
+    ports: 
+      - '8888:8888'

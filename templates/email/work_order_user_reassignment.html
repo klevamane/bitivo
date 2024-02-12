@@ -1,0 +1,15 @@
+{% extends '/email/base.html' %} {% block content %}
+<h2 class="email-greetings">
+    <strong>Hi {{ data.username }} !</strong>
+</h2>
+<p class="email-body-content">
+    <strong>{{ data.workOrderTitle }}</strong> which was previously assigned to
+    you has been reassigned to <strong>{{ data.newAssignee }}.</strong> You will
+    no longer be required to carry out
+    <strong>{{ data.workOrderTitle }}</strong> again. Please log in to Activo to
+    check your work orders"
+</p>
+<a href="https://{{ data.domain }}/" class="button">
+    View Details
+</a>
+{% endblock %}

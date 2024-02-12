@@ -1,0 +1,19 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+      <h2 class="email-greetings">
+        <strong>Hi {{ data.username }} !</strong>
+      </h2>
+      <p class="email-body-content">
+       This is a gentle reminder that the schedules listed below are due today. Kindly <a target="_blank" href="https://{{ data.domain }}/">login</a> to Activo to attend to them.
+      </p>
+      <div class="tasklist">
+        <ul>
+          <p class="task-header">Task name(s)</p>
+          {% for task in data.tasks %}
+          	<li>{{ task }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <p class="greet">Have a great day! <strong>Thank you</strong></p>
+{% endblock %}

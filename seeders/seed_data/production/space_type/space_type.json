@@ -1,0 +1,22 @@
+{
+ "space_type": [
+     {
+        "type": "Building",
+        "color": "Red"
+    }, {
+        "type": "Floor",
+        "color": "Blue"
+    }, {
+        "type": "Wing",
+        "color": "Purple"
+    }, {
+        "type": "Space",
+        "color": "Brown"
+    }, {
+        "type": "Room",
+        "color": "Orange"
+    }, {
+        "type": "Store",
+        "color": "Green"
+    }]
+}

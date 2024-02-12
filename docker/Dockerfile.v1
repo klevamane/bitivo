@@ -1,0 +1,43 @@
+# base image
+FROM ubuntu:16.04 
+
+# Maintainer
+LABEL maintainer="Idrees Ibraheem <idrees.ibraheem@andela.com>"
+
+# Working directory where all the setup would take place in the image
+WORKDIR /activo-api
+
+# The default user that should be used
+USER root
+
+# copy the Pipfile which contains dependencies to be installed
+COPY ./Pipfile /activo-api
+COPY ./Pipfile.lock /activo-api
+
+# The image provisioning happens here 
+RUN apt-get update -y && \
+  apt-get install -y python3-pip python3-dev python-flask python3 zlib1g-dev libbz2-dev && \
+  apt-get install build-essential -y && \
+  apt-get install git-core -y && \
+  apt-get install curl -y && \
+  apt-get install libssl-dev -y && \
+  curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash && \
+  export PATH="/root/.pyenv/bin:$PATH" && \
+  eval "$(pyenv init -)" && \
+  eval "$(pyenv virtualenv-init -)"  && \
+  pyenv install 3.6.5 -s && \
+  export PATH="/root/.pyenv/versions/3.6.5:$PATH" && \
+  export LC_ALL=C.UTF-8 && \
+  export LANG=C.UTF-8 && \
+  export PATH="/root/activo-api/start_api.sh:$PATH" && \
+  pip3 install --user pipenv==2018.5.18 && \
+  python3 -m pip install pipenv==2018.5.18 && \
+  python3 -m pipenv install gunicorn 
+
+
+
+#  add the port to the docker environment
+ENV PORT=5000
+
+# All files in the root directory are copied here
+COPY . .

@@ -1,0 +1,18 @@
+{% extends '/email/base.html' %}
+
+{% block content %}
+<h2 class="email-greetings">
+Hi {{ data.recipient }}!
+</h2>
+<p class="email-body-content">
+<strong>{{ data.sender }}</strong> has posted the following comment about
+<strong>{{ data.work_order }}</strong><br>
+<i>{{ data.comment }}</i>
+</p>
+
+<p>Please login to Activo for more details.</p>
+<p>Thank you.</p>
+<div class="login">
+<a href="https://{{ data.domain }}" class="login-button">View Details</a>
+</div>
+{% endblock %}
